@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bus</title>
+    <script src = "./vue.js"></script>
+
+</head>
+<body>
+    <div id = "app">
+        <body-context>
+            <div class="header" slot="header">header</div>
+            <div class="footer" slot="footer">footer</div>
+        </body-context>
+    </div>
+    <script>
+        Vue.component('body-context',{
+           template:`<div>
+                    <slot name= "header"></slot>
+                    <div class="content">content</div>
+                    <slot name= "footer"></slot>
+               </div>`,
+
+        });
+        var vm = new Vue({
+            el : "#app"
+        })
+    </script>
+</body>
+</html>
