@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bus</title>
+    <script src = "./vue.js"></script>
+    <link rel = "stylesheet" type="text/css" href="./animate.css">
+<!--    <style>-->
+<!--        @keyframes bounceIn {-->
+<!--            0% {-->
+<!--                transform: scale(0);-->
+<!--            }-->
+<!--            50% {-->
+<!--                transform: scale(8);-->
+<!--            }-->
+<!--            100% {-->
+<!--                transform: scale(1);-->
+<!--            }-->
+<!--        }-->
+<!--        .v-enter-active{-->
+<!--            transform-origin: left center;-->
+<!--            animation:bounceIn 3s;-->
+<!--        }-->
+<!--        .v-leave-active{-->
+<!--            transform-origin: left center;-->
+<!--            animation:bounceIn 3s reverse;-->
+<!--        }-->
+<!--    </style>-->
+
+</head>
+<body>
+    <div id = "app">
+        <transition
+            name = "fade"
+            enter-active-class = "animated rubberBand"
+            leave-active-class = "animated swing"
+        >
+        <div v-if="show">hahhahahahahah</div>
+        </transition>
+
+        <button @click="handleClick">切换</button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el : "#app",
+            data:{
+                show:true
+            },
+            methods:{
+                handleClick:function () {
+                    this.show = !this.show;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
