@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bus</title>
+    <script src = "./vue.js"></script>
+
+</head>
+<body>
+    <div id = "app">
+        <child content = "Scelery"></child>
+        <child content = "Huang"></child>
+    </div>
+    <script>
+        Vue.prototype.bus = new Vue();
+        //每一个vue 实例就会有一个bus 属性
+        Vue.component('child',{
+            data:function(){
+                return{
+                    selfcontent: this.content
+                }
+            },
+            props:{
+                content:String
+            },
+           template:'<div @click = "handleClick">{{selfcontent}}</div>',
+            methods:{
+                handleClick:function () {
+                    this.bus.$emit('change',this.content)
+                }
+            },
+            mounted:function () {
+                var _this = this;
+                this.bus.$on('change',function (msg) {
+                    _this.selfcontent = msg
+                })
+            }
+        });
+        var vm = new Vue({
+            el : "#app"
+        })
+    </script>
+</body>
+</html>
